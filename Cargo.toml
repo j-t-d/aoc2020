@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "crates/input",
-    "days/day1"
+    "days/day1",
+    "days/day2",
 ]
