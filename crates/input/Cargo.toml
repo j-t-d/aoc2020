@@ -1,0 +1,13 @@
+[package]
+name = "input"
+version = "0.1.0"
+authors = ["Jeff Davey <jeffdavey@submersion.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+snafu = "0.6"
+attohttpc = "0.16"
+config = "0.10"
+url = "2.2"
