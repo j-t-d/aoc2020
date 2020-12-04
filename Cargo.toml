@@ -3,4 +3,5 @@ members = [
     "crates/input",
     "days/day1",
     "days/day2",
+    "days/day3",
 ]
