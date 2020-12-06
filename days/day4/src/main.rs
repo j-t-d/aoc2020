@@ -72,7 +72,7 @@ fn parse_height(hgt: &str) -> Result<Option<Height>, Error> {
 }
 
 fn verify_hcl(hcl: &str) -> bool {
-    hcl.chars().nth(0) == Some('#') && hcl.len() == 7 && (&hcl[1..]).chars().filter(|c| c.is_alphanumeric()).count() == 6
+    hcl.starts_with('#') && hcl.len() == 7 && (&hcl[1..]).chars().filter(|c| c.is_alphanumeric()).count() == 6
 }
 
 fn verify_ecl(ecl: &str) -> bool {
@@ -129,11 +129,11 @@ fn verify_fields(passport: &HashMap<&str, &str>) -> bool {
     required_keys.iter().filter(|key| passport.contains_key(**key)).count() == required_keys.len()
 }
 
-fn part1(input: &Vec<HashMap<&str, &str>>) -> usize {
+fn part1(input: &[HashMap<&str, &str>]) -> usize {
     input.iter().filter(|pass| verify_fields(*pass)).count()
 }
 
-fn part2(input: &Vec<HashMap<&str, &str>>) -> usize {
+fn part2(input: &[HashMap<&str, &str>]) -> usize {
     input
         .iter()
         .filter(|pass| match verify_field_values(*pass) {

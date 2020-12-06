@@ -40,7 +40,7 @@ fn half(range: &Range<usize>) -> usize {
 }
 
 fn find_seat(seat: &str, rows: Range<usize>, columns: Range<usize>) -> Seat {
-    let (rows, columns) = match seat.chars().nth(0) {
+    let (rows, columns) = match seat.chars().next() {
         Some('B') => (half(&rows)..rows.end, columns),
         Some('F') => (rows.start..half(&rows), columns),
         Some('L') => (rows, columns.start..half(&columns)),
@@ -57,11 +57,11 @@ fn find_seat(seat: &str, rows: Range<usize>, columns: Range<usize>) -> Seat {
     find_seat(&seat[1..], rows, columns)
 }
 
-fn part1(input: &Vec<&str>) -> usize {
+fn part1(input: &[&str]) -> usize {
     input.iter().map(|seat| find_seat(seat, 0..128, 0..8)).max().map(|seat| seat.id).unwrap_or(0)
 }
 
-fn part2(input: &Vec<&str>) -> usize {
+fn part2(input: &[&str]) -> usize {
     let mut ids = input.iter().map(|seat| find_seat(seat, 0..128, 0..8)).collect::<Vec<_>>();
     ids.sort();
     let mut prev = ids[0].id;
