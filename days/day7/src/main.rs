@@ -66,11 +66,7 @@ fn part2_process<'a>(input: &DiGraphMap<&'a str, usize>, bag: &'a str) -> usize 
     input.neighbors_directed(bag, Direction::Outgoing).for_each(|s| {
         let edge = *(input.edge_weight(bag, s).unwrap());
         let edge_bags = part2_process(input, s);
-        if edge_bags != 0 {
-            count += edge * edge_bags + edge;
-        } else {
-            count += edge;
-        }
+        count += edge + edge * edge_bags;
     });
     count
 }
